@@ -16,14 +16,15 @@ export default function Contact() {
     try {
       setIsSubmitting(true);
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        'service_0evqnuo',
+        'template_enuh695',
         formRef.current,
-        'YOUR_PUBLIC_KEY'
+        'oGlAvxECdp-vf_t-T'
       );
       toast.success('Message sent successfully!');
       formRef.current.reset();
     } catch (error) {
+      console.error("EmailJS error:", error);
       toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -71,7 +72,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Email</p>
-                  <p className="text-gray-900 font-medium">contact@roadsidecoder.com</p>
+                  <p className="text-gray-900 font-medium">supratipbhattacharya2@gmail.com</p>
                 </div>
               </motion.div>
               

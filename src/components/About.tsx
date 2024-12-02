@@ -27,7 +27,7 @@ export default function About() {
             variants={fadeInUp}
           >
             <img
-              src="/piyush.png"
+              src="/supratip.jpg"
               alt="Piyush Agarwal"
               className="w-full h-full object-cover rounded-2xl"
             />
@@ -35,17 +35,16 @@ export default function About() {
 
           <motion.div className="space-y-6" variants={staggerContainer}>
             <motion.p className="text-lg text-gray-600" variants={fadeInUp}>
-              Hi, I'm Piyush Agarwal, a passionate Full Stack Developer and
-              educator. I create content on YouTube through my channel
-              RoadsideCoder, where I share my knowledge and experience with the
-              developer community.
+            Hello! I’m Supratip Bhattacharya, a Software Development Engineer with a passion for building high-performance, user-centric web applications. With extensive experience in frontend development, I’m proficient in React.js, 
+            TypeScript, Redux, and Next.js, and I have a keen eye for creating seamless, accessible user experiences.
             </motion.p>
 
             <motion.p className="text-lg text-gray-600" variants={fadeInUp}>
-              With extensive experience in modern web technologies and a strong
-              foundation in both frontend and backend development, I help
-              businesses build scalable solutions and mentor aspiring developers
-              to achieve their goals.
+            Throughout my career, I've driven impactful results such as cutting task completion times by 90% and boosting user engagement by 40%. My commitment to continuous improvement includes automating CI/CD pipelines to streamline development and deploying best practices for optimal performance.
+
+Beyond my professional work, I enjoy contributing to open-source projects, developing educational tools, and embracing new challenges to enhance my skills and make a positive impact.
+
+Let’s connect and create something amazing together!
             </motion.p>
 
             <motion.div
@@ -53,12 +52,12 @@ export default function About() {
               variants={fadeInUp}
             >
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h3 className="font-bold text-xl text-gray-900">3+</h3>
+                <h3 className="font-bold text-xl text-gray-900">4+</h3>
                 <p className="text-gray-600">Years Experience</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h3 className="font-bold text-xl text-gray-900">125K+</h3>
-                <p className="text-gray-600">YouTube Subscribers</p>
+                <h3 className="font-bold text-xl text-gray-900">2K+</h3>
+                <p className="text-gray-600">Linkedln Followers</p>
               </div>
             </motion.div>
           </motion.div>

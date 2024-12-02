@@ -16,16 +16,17 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className="text-gray-700 hover:text-gray-900 transition-colors">About</a>
             <a href="#skills" className="text-gray-700 hover:text-gray-900 transition-colors">Skills</a>
+            <a href="#timeline" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>Experience & Education</a>
             <a href="#projects" className="text-gray-700 hover:text-gray-900 transition-colors">Projects</a>
             <a href="#contact" className="text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
             <div className="flex items-center space-x-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
+              <a href="https://github.com/Supratip1" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
+              <a href="https://www.linkedin.com/in/supratip/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:your.email@example.com" className="text-gray-700 hover:text-gray-900">
+              <a href="mailto:supratipbhattacharya2@gmail.com" className="text-gray-700 hover:text-gray-900">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -45,16 +46,17 @@ export default function Navbar() {
             <div className="flex flex-col space-y-4 px-2 pt-2 pb-3">
               <a href="#about" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>About</a>
               <a href="#skills" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>Skills</a>
+              <a href="#timeline" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>Experience & Education</a>
               <a href="#projects" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>Projects</a>
               <a href="#contact" className="text-gray-700 hover:text-gray-900" onClick={() => setIsOpen(false)}>Contact</a>
               <div className="flex space-x-4 py-2">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
+                <a href="https://github.com/Supratip1" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
                   <Github className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
+                <a href=" https://www.linkedin.com/in/supratip/"target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="mailto:your.email@example.com" className="text-gray-700 hover:text-gray-900">
+                <a href="mailto:supratipbhattacharya2@gmail.com" className="text-gray-700 hover:text-gray-900">
                   <Mail className="w-5 h-5" />
                 </a>
               </div>

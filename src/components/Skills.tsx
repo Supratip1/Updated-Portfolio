@@ -11,7 +11,7 @@ const skills = [
   {
     category: 'Backend Development',
     icon: Server,
-    skills: ['Node.js', 'Express', 'Python', 'Django', 'REST APIs'],
+    skills: ['Node.js', 'Python', 'REST APIs'],
   },
   {
     category: 'Database',
@@ -26,12 +26,12 @@ const skills = [
   {
     category: 'Programming Languages',
     icon: Code,
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'SQL'],
+    skills: ['JavaScript', 'TypeScript', 'Python','C++'],
   },
   {
     category: 'Design',
     icon: Palette,
-    skills: ['Figma', 'Adobe XD', 'UI/UX', 'Responsive Design'],
+    skills: ['Figma', 'UI/UX', 'Responsive Design'],
   },
 ];
 
