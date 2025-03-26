@@ -1,129 +1,117 @@
-import { ArrowDown } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { gradientText, gradientBg, gradientHover } from '../utils/gradients';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import React, { useRef } from 'react';
+import { ArrowRight, Play } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Lottie from 'lottie-react';
+import animationData from '../Heroanimation.json'; // Adjust the path
+
+const fadeIn = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.12 } }
+};
 
 export default function Hero() {
-  return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gray-900">
-      {/* Gradient Orbs */}
-      <motion.div 
-        className="absolute inset-0 overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <motion.div
-          className="absolute -top-48 -left-48 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-48 -right-48 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-      </motion.div>
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
 
+  return (
+    <section 
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-white dark:bg-gray-950 px-6 font-inter"
+    >
+      {/* Text & Lottie container */}
       <motion.div 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center relative z-10"
-        variants={staggerContainer}
-        initial="initial"
-        animate="animate"
+        className="container max-w-5xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-16"
       >
-        <div className="space-y-8">
+        {/* Left Side (Text Content) */}
+        <motion.div 
+          className="space-y-8 md:space-y-10 max-w-xl text-left"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold"
-            variants={fadeInUp}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight font-playfair"
+            variants={fadeIn}
           >
-            <motion.span 
-              className="block text-white opacity-90"
-              variants={fadeInUp}
-            >
-              Building the Future
-            </motion.span>
-            <motion.span 
-              className={`block ${gradientText}`}
-              variants={fadeInUp}
-            >
-              One Line of Code
-            </motion.span>
-            <motion.span 
-              className="block text-white opacity-90"
-              variants={fadeInUp}
-            >
-              at a Time
-            </motion.span>
+            Where AI Meets <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-poppins">
+              Intelligent Interfaces
+            </span>
           </motion.h1>
 
+          {/* Frontend-relevant info */}
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
-            variants={fadeInUp}
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-lg font-inter"
+            variants={fadeIn}
           >
-            Front-end Heavy Full Stack Developer | UI/UX Enthusiast | Problem Solver
+            I build interactive, high-performance user interfaces using modern web technologies.
+            My focus is on creating seamless, responsive, and accessible front-end experiences.
           </motion.p>
 
+          {/* Worked at */}
+          <motion.div
+            className="flex items-center justify-start gap-4"
+            variants={fadeIn}
+          >
+            <span className="text-base md:text-lg text-gray-600 dark:text-gray-300 font-medium">
+              Worked at:
+            </span>
+            {/* TCS logo */}
+            <img
+              src="/tcs.jpg"
+              alt="TCS"
+              className="h-8 w-auto"
+            />
+            {/* News Corp logo */}
+            <img
+              src="/newscorp.png"
+              alt="News Corp"
+              className="h-8 w-auto"
+            />
+          </motion.div>
+
+          {/* Call-to-action buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            variants={fadeInUp}
+            className="flex flex-col sm:flex-row items-center justify-start gap-6 pt-6"
+            variants={fadeIn}
           >
             <motion.a
               href="#projects"
-              className={`px-8 py-3 rounded-full text-white ${gradientBg} ${gradientHover} transition-all duration-300 shadow-lg shadow-purple-500/25`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto px-8 py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-blue-600/25 transition-all duration-300 sm:min-w-[180px] font-poppins"
+              whileHover={{ scale: 1.03, translateY: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              View My Work
+              View Works <ArrowRight className="w-5 h-5" />
             </motion.a>
+            
             <motion.a
-              href="#contact"
-              className="px-8 py-3 rounded-full text-white border-2 border-white/20 hover:bg-white/10 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              href="#about"
+              className="w-full sm:w-auto px-8 py-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white font-medium flex items-center justify-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-750 transition-all duration-300 sm:min-w-[180px] font-poppins"
+              whileHover={{ scale: 1.03, translateY: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Contact Me
+              <Play className="w-6 h-6" /> Try AI SaaS Products
             </motion.a>
-          </motion.div>
-        </div>
-
-        <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <ArrowDown className="w-6 h-6 text-white/70" />
           </motion.div>
         </motion.div>
-      </motion.div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50" />
+        {/* Right Side (Lottie Animation) - Moves Down in Mobile */}
+        {/* Right Side (Lottie Animation) - Move Further Down in Mobile */}
+<motion.div 
+  className="w-40 sm:w-60 md:w-[400px] lg:w-[600px] flex justify-center mt-20 sm:mt-0"
+>
+  <Lottie animationData={animationData} loop={true} />
+</motion.div>
+
+      </motion.div>
     </section>
   );
 }
