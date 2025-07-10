@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaArrowUpLong } from "react-icons/fa6";
 import Lottie from "lottie-react";
@@ -6,6 +6,7 @@ import animationData from "../../public/Animation.json";
 
 function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
+  const unicornRef = useRef(null);
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -13,104 +14,39 @@ function HeroSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Inject UnicornStudio script for all devices
+  useEffect(() => {
+    if (unicornRef.current && !window.UnicornStudio) {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.innerHTML = `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.27/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`;
+      unicornRef.current.appendChild(script);
+    }
+  }, []);
+
+
+
   return (
-    isMobile ? (
-      <div id="hero" className="container w-full bg-[#f8f8f6] text-[#212121] mb-8 py-8 min-h-screen">
-        <div className="flex flex-col md:flex-row items-center justify-between py-[10vh] gap-8">
-          <div className="textstructure w-full md:w-1/2">
-            {[
-              "I craft",
-              "Interactive",
-              "webapps",
-            ].map((item, index) => (
-              <div key={index} className="masker">
-                <div className="w-fit flex items-center overflow-hidden">
-                  {index === 1 && (
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: "12vw" }}
-                      transition={{
-                        ease: [0.76, 0, 0.24, 1],
-                        duration: 1,
-                        delay: 1,
-                      }}
-                      className="w-[6vw] h-[12vh] sm:h-[14vh] sm:w-[4vw] sm:mt-5 mr-5 rounded-md overflow-hidden"
-                    >
-                      <img
-                        src="/hero.jpg"
-                        alt="Hero"
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  )}
-                  <h1
-                    key={index}
-                    className="font-FoundersGroteskCondensed sm:-mb-[1vw] md:text-[10vw] sm:text-[12vw] text-[16vw] uppercase whitespace-nowrap leading-none h-full"
-                  >
-                    {item}
-                  </h1>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center items-center">
-            <Lottie animationData={animationData} loop={true} className="w-[300px] h-[300px] md:w-[400px] md:h-[400px]" />
-          </div>
-        </div>
-        <div className="flex items-center justify-end border-t-[1px] border-zinc-800 py-5 font-NueueMontreal"></div>
+    <div
+      id="hero"
+      data-scroll
+      data-scroll-section
+      data-scroll-speed="-0.5"
+      className="container w-full bg-[#f8f8f6] text-[#212121] min-h-screen flex flex-col items-center pt-8"
+      style={{ marginTop: '0px' }}
+    >
+      <div className="w-full flex flex-col items-center mb-4 mt-0">
+        <h1 className="font-NueueMontreal text-3xl md:text-5xl text-center font-bold mb-2" style={{ fontFamily: 'NeueMontreal, sans-serif' }}>
+          Building Interactive Web Experiences
+        </h1>
+        <p className="font-NueueMontreal text-lg md:text-2xl text-center max-w-3xl text-[#444]" style={{ fontFamily: 'NeueMontreal, sans-serif' }}>
+          I design and engineer high-performance, visually striking web applications that engage users and elevate brands. Explore my work below.
+        </p>
       </div>
-    ) : (
-      <div
-        id="hero"
-        data-scroll
-        data-scroll-section
-        data-scroll-speed="-0.8"
-        className="container w-full bg-[#f8f8f6] text-[#212121] min-h-screen"
-      >
-        <div className="flex flex-col md:flex-row items-center justify-between py-[10vh] gap-8">
-          <div className="textstructure w-full md:w-1/2">
-            {[
-              "I craft",
-              "Interactive",
-              "webapps",
-            ].map((item, index) => (
-              <div key={index} className="masker">
-                <div className="w-fit flex items-center overflow-hidden">
-                  {index === 1 && (
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: "12vw" }}
-                      transition={{
-                        ease: [0.76, 0, 0.24, 1],
-                        duration: 1,
-                        delay: 1,
-                      }}
-                      className="w-[6vw] h-[12vh] sm:h-[14vh] sm:w-[4vw] sm:mt-5 mr-5 rounded-md overflow-hidden"
-                    >
-                      <img
-                        src="/hero.jpg"
-                        alt="Hero"
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  )}
-                  <h1
-                    key={index}
-                    className="font-FoundersGroteskCondensed sm:-mb-[1vw] md:text-[10vw] sm:text-[12vw] text-[16vw] uppercase whitespace-nowrap leading-none h-full"
-                  >
-                    {item}
-                  </h1>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center items-center">
-            <Lottie animationData={animationData} loop={true} className="w-[300px] h-[300px] md:w-[400px] md:h-[400px]" />
-          </div>
-        </div>
-        <div className="flex items-center justify-end border-t-[1px] border-zinc-800 py-5 font-NueueMontreal"></div>
+      <div ref={unicornRef} data-scroll data-scroll-speed="0" className="rounded-3xl overflow-hidden shadow-xl w-full flex justify-center" style={{ maxWidth: '100%', maxHeight: '80vh' }}>
+        <div data-us-project="mLhWHvsaOqs7ezTPMacw" style={{ width: '100vw', maxWidth: '100%', height: '60vw', maxHeight: '80vh' }}></div>
       </div>
-    )
+    </div>
   );
 }
 

@@ -33,7 +33,12 @@ function App() {
           lenisOptions: {
             smoothTouch: true,
             touchMultiplier: 1,
+            smoothWheel: true,
+            wheelMultiplier: 0.8,
           },
+          smooth: true,
+          lerp: 0.1,
+          multiplier: 0.8,
         });
         setLocomotiveScroll(newLocomotiveScroll);
       }
@@ -49,7 +54,7 @@ function App() {
         locomotiveScroll.destroy();
       }
     };
-  }, [locomotiveScroll]);
+  }, []);
 
   return (
     <>
